@@ -1,13 +1,14 @@
-package com.mokon.application.test;
+package com.mokon.spring.boot.backend.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class ApplicationTestApplication {
+@ComponentScan("com.mokon.*")
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApplicationTestApplication.class, args);
+		SpringApplication.run(App.class, args);
 	}
 }
