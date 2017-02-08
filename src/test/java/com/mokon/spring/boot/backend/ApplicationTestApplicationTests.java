@@ -1,4 +1,4 @@
-package com.mokon.application.test;
+package com.mokon.spring.boot.backend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
