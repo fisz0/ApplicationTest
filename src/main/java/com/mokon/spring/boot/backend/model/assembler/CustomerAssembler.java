@@ -13,9 +13,7 @@ public class CustomerAssembler {
 
     public static CustomerDto toDto(Customer customer) {
         CustomerDto dto = new CustomerDto();
-        if (customer.getId() != null) {
-            dto.setId(customer.getId());
-        }
+        dto.setId(customer.getId());
         dto.setFirstName(customer.getFirstName());
         dto.setLastName(customer.getLastName());
         return dto;
