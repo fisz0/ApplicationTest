@@ -45,12 +45,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Iterable<CustomerDto> findAll() {
+    public List<CustomerDto> findAll() {
         return CustomerAssembler.toDtoCollection(repository.findAll());
     }
 
     @Override
-    public Iterable<CustomerDto> findAll(Iterable<Long> ids) {
+    public List<CustomerDto> findAll(Iterable<Long> ids) {
         return CustomerAssembler.toDtoCollection(repository.findAll(ids));
     }
 

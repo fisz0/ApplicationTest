@@ -19,9 +19,9 @@ public interface CustomerService {
 
     boolean exists(Long id);
 
-    Iterable<CustomerDto> findAll();
+    List<CustomerDto> findAll();
 
-    Iterable<CustomerDto> findAll(Iterable<Long> ids);
+    List<CustomerDto> findAll(Iterable<Long> ids);
 
     long count();
 

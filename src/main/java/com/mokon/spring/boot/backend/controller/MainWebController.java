@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * Created by mokon on 08.02.2017.
@@ -22,7 +25,7 @@ public class MainWebController {
     private CustomerService service;
 
     @GetMapping("/")
-    public String prepareData() {
+    public String prepareData(Model model) {
         service.save(new CustomerDto("Jack", "Bauer"));
         service.save(new CustomerDto("Chloe", "O'Brian"));
         service.save(new CustomerDto("Kim", "Bauer"));
@@ -50,7 +53,7 @@ public class MainWebController {
         for (CustomerDto bauer : service.findByLastName("Bauer")) {
             log.info(bauer.toString());
         }
-        log.info("");
+        model.addAttribute("customers", service.findAll());
         return "index";
     }
 
