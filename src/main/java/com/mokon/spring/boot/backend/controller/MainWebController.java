@@ -1,17 +1,10 @@
 package com.mokon.spring.boot.backend.controller;
 
-import com.mokon.spring.boot.backend.model.dto.CustomerDto;
 import com.mokon.spring.boot.backend.model.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 /**
  * Created by mokon on 08.02.2017.
@@ -24,7 +17,7 @@ public class MainWebController {
     @Autowired
     private CustomerService service;
 
-    @GetMapping("/")
+/*    @GetMapping("/")
     public String prepareData(Model model) {
         service.save(new CustomerDto("Jack", "Bauer"));
         service.save(new CustomerDto("Chloe", "O'Brian"));
@@ -61,5 +54,5 @@ public class MainWebController {
     public String render(@RequestParam(name = "name", required = false) String name, Model model) {
         model.addAttribute("name", name);
         return "index";
-    }
+    }*/
 }
