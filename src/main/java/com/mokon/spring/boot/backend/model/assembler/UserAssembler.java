@@ -12,7 +12,9 @@ import java.util.Set;
 public class UserAssembler {
     public static UserDto toDto(User user) {
         UserDto dto = new UserDto();
-        dto.setId(user.getId());
+        if (user.getId() != null) {
+            dto.setId(user.getId());
+        }
         dto.setPassword(user.getPassword());
         dto.setPasswordConfirm(user.getPasswordConfirm());
         dto.setRoles(RoleAssembler.toDtoCollection(user.getRoles()));
@@ -26,7 +28,9 @@ public class UserAssembler {
         user.setPassword(dto.getPassword());
         user.setPasswordConfirm(dto.getPasswordConfirm());
         user.setId(dto.getId());
-        user.setRoles(RoleAssembler.toEntityCollection(dto.getRoles()));
+        if (dto.getRoles() != null) {
+            user.setRoles(RoleAssembler.toEntityCollection(dto.getRoles()));
+        }
         return user;
     }
 

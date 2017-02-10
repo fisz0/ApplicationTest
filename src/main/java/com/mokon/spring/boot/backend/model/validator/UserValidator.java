@@ -1,5 +1,7 @@
 package com.mokon.spring.boot.backend.model.validator;
 
+import com.mokon.spring.boot.backend.model.assembler.UserAssembler;
+import com.mokon.spring.boot.backend.model.dto.UserDto;
 import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,8 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        User user = (User) o;
+        UserDto dto = (UserDto) o;
+        User user = UserAssembler.toEntity(dto);
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
         if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {

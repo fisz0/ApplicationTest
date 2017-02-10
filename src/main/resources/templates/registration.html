@@ -23,33 +23,67 @@
 <body>
 
 <div class="container">
-    <form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
-        <bind path="username">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <input type="text" path="username" class="form-control" placeholder="Username"
-                       autofocus="true"></input>
-                <errors path="username"></errors>
-            </div>
-        </bind>
-
-        <bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <input type="password" path="password" class="form-control" placeholder="Password"></input>
-                <errors path="password"></errors>
-            </div>
-        </bind>
-
-        <bind path="passwordConfirm">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <input type="password" path="passwordConfirm" class="form-control"
-                       placeholder="Confirm your password"></input>
-                <errors path="passwordConfirm"></errors>
-            </div>
-        </bind>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    <h2 class="form-signin-heading">Create your account</h2>
+    <form action="#" th:action="@{/registration}" method="post" th:object="${userForm}" class="form-signin">
+        <table>
+            <tr>
+                <td>
+                    <label id="usernameLabel">Username:</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{username}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="passwordLabel">Password:</label>
+                </td>
+                <td>
+                    <input type="password" th:field="*{password}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="confirmPasswordLabel">Confirm password:</label>
+                </td>
+                <td>
+                    <input type="password" th:field="*{passwordConfirm}" class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Create user</button>
+                </td>
+            </tr>
+        </table>
     </form>
+    <!--    <form method="POST" modelAttribute="userForm" class="form-signin">
+            <h2 class="form-signin-heading">Create your account</h2>
+            <bind path="username">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <input type="text" path="username" class="form-control" placeholder="Username"
+                           autofocus="true"></input>
+                    <errors path="username"></errors>
+                </div>
+            </bind>
+
+            <bind path="password">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <input type="password" path="password" class="form-control" placeholder="Password"></input>
+                    <errors path="password"></errors>
+                </div>
+            </bind>
+
+            <bind path="passwordConfirm">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <input type="password" path="passwordConfirm" class="form-control"
+                           placeholder="Confirm your password"></input>
+                    <errors path="passwordConfirm"></errors>
+                </div>
+            </bind>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        </form>-->
 
 </div>
 <!-- /container -->
