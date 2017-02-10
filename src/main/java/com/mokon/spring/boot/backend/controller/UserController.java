@@ -1,71 +1,66 @@
 package com.mokon.spring.boot.backend.controller;
 
-/**
- * Created by marcinokon on 09.02.2017.
- */
-
-import com.mokon.spring.boot.backend.model.dto.UserDto;
-import com.mokon.spring.boot.backend.model.entity.User;
-import com.mokon.spring.boot.backend.model.service.SecurityService;
+import com.mokon.spring.boot.backend.model.dto.UserCreateForm;
 import com.mokon.spring.boot.backend.model.service.UserService;
-import com.mokon.spring.boot.backend.model.validator.UserValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.mokon.spring.boot.backend.model.validator.UserCreateFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import java.util.NoSuchElementException;
+
+/**
+ * Created by mokon on 10.02.2017.
+ */
 @Controller
 public class UserController {
 
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    private final UserService userService;
+    private final UserCreateFormValidator userCreateFormValidator;
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private SecurityService securityService;
-
-    @Autowired
-    private UserValidator userValidator;
-
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new UserDto());
-        return "registration";
+    public UserController(UserService userService, UserCreateFormValidator userCreateFormValidator) {
+        this.userService = userService;
+        this.userCreateFormValidator = userCreateFormValidator;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") UserDto userForm, BindingResult bindingResult, Model model) {
-        userValidator.validate(userForm, bindingResult);
+    @InitBinder("form")
+    public void initBinder(WebDataBinder binder) {
+        binder.addValidators(userCreateFormValidator);
+    }
 
+    @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
+    @RequestMapping("/user/{id}")
+    public ModelAndView getUserPage(@PathVariable Long id) {
+        return new ModelAndView("user", "user", userService.getUserById(id)
+            .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @RequestMapping(value = "/user/create", method = RequestMethod.GET)
+    public ModelAndView getUserCreatePage() {
+        return new ModelAndView("user_create", "form", new UserCreateForm());
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @RequestMapping(value = "/user/create", method = RequestMethod.POST)
+    public String handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "user_create";
         }
-        userService.save(userForm);
-        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-        return "redirect:/welcome";
+        try {
+            userService.create(form);
+        } catch (DataIntegrityViolationException e) {
+            bindingResult.reject("email.exists", "Email already exists");
+            return "user_create";
+        }
+        return "redirect:/users";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        model.addAttribute("userForm", new UserDto());
-
-        return "login";
-    }
-
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
-    }
 }
