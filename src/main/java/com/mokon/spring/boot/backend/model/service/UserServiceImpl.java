@@ -4,6 +4,9 @@ package com.mokon.spring.boot.backend.model.service;
  * Created by marcinokon on 09.02.2017.
  */
 
+import com.mokon.spring.boot.backend.model.assembler.RoleAssembler;
+import com.mokon.spring.boot.backend.model.assembler.UserAssembler;
+import com.mokon.spring.boot.backend.model.dto.UserDto;
 import com.mokon.spring.boot.backend.model.entity.Role;
 import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.model.repository.RoleRepository;
@@ -25,18 +28,16 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void save(User user) {
+    public void save(UserDto user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
-        for (Role role : roleRepository.findAll()) {
-            roles.add(role);
-        }
-        user.setRoles(roles);
-        userRepository.save(user);
+        roleRepository.findAll().forEach(e -> roles.add(e));
+        user.setRoles(RoleAssembler.toDtoCollection(roles));
+        userRepository.save(UserAssembler.toEntity(user));
     }
 
     @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public UserDto findByUsername(String username) {
+        return UserAssembler.toDto(userRepository.findByUsername(username));
     }
 }

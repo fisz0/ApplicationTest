@@ -1,5 +1,6 @@
 package com.mokon.spring.boot.backend.model.service;
 
+import com.mokon.spring.boot.backend.model.dto.UserDto;
 import com.mokon.spring.boot.backend.model.entity.User;
 
 /**
@@ -7,7 +8,7 @@ import com.mokon.spring.boot.backend.model.entity.User;
  */
 public interface UserService {
 
-    public void save(User user);
+    public void save(UserDto user);
 
-    public User findByUsername(String username);
+    public UserDto findByUsername(String username);
 }

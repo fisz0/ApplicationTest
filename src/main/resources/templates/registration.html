@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>Create an account</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <form method="POST" modelAttribute="userForm" class="form-signin">
+        <h2 class="form-signin-heading">Create your account</h2>
+        <bind path="username">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="text" path="username" class="form-control" placeholder="Username"
+                       autofocus="true"></input>
+                <errors path="username"></errors>
+            </div>
+        </bind>
+
+        <bind path="password">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="password" path="password" class="form-control" placeholder="Password"></input>
+                <errors path="password"></errors>
+            </div>
+        </bind>
+
+        <bind path="passwordConfirm">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <input type="password" path="passwordConfirm" class="form-control"
+                       placeholder="Confirm your password"></input>
+                <errors path="passwordConfirm"></errors>
+            </div>
+        </bind>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+
+</div>
+<!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.mokon.spring.boot.backend.model.service;
 
+import com.mokon.spring.boot.backend.model.assembler.UserAssembler;
+import com.mokon.spring.boot.backend.model.dto.UserDto;
 import com.mokon.spring.boot.backend.model.entity.Role;
 import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.model.repository.UserRepository;
@@ -27,12 +29,11 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        UserDto user = UserAssembler.toDto(userRepository.findByUsername(username));
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getRoles()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
+
+        user.getRoles().forEach(role -> grantedAuthorities.add(new SimpleGrantedAuthority(role.getName())));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }

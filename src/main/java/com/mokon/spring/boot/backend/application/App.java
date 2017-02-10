@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @EnableJpaRepositories(value = "com.mokon.spring.boot.backend.model.repository")
-@ComponentScan(basePackages = {"com.mokon.spring.boot.backend.model.service", "com.mokon.spring.boot.backend.controller", "com.mokon.spring.boot.backend.model.validator"})
+@ComponentScan(basePackages = {"com.mokon.spring.boot.backend.model.service", "com.mokon.spring.boot.backend.configuration", "com.mokon.spring.boot.backend.controller", "com.mokon.spring.boot.backend.model.validator"})
 @EntityScan(basePackages = "com.mokon.spring.boot.backend.model.entity")
 public class App extends SpringBootServletInitializer {
 
