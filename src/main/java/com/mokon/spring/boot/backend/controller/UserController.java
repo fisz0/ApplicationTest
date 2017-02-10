@@ -1,8 +1,8 @@
 package com.mokon.spring.boot.backend.controller;
 
-import com.mokon.spring.boot.backend.model.dto.UserCreateForm;
-import com.mokon.spring.boot.backend.model.service.UserService;
-import com.mokon.spring.boot.backend.model.validator.UserCreateFormValidator;
+import com.mokon.spring.boot.backend.domain.UserCreateForm;
+import com.mokon.spring.boot.backend.service.user.UserService;
+import com.mokon.spring.boot.backend.domain.validator.UserCreateFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;

@@ -1,6 +1,6 @@
-package com.mokon.spring.boot.backend.model.service;
+package com.mokon.spring.boot.backend.service.currentuser;
 
-import com.mokon.spring.boot.backend.model.dto.CurrentUser;
+import com.mokon.spring.boot.backend.domain.CurrentUser;
 
 /**
  * Created by mokon on 10.02.2017.

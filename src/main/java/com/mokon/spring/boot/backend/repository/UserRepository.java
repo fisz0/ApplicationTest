@@ -1,4 +1,4 @@
-package com.mokon.spring.boot.backend.model.repository;
+package com.mokon.spring.boot.backend.repository;
 
 /**
  * Created by marcinokon on 09.02.2017.

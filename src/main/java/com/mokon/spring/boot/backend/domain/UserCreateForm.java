@@ -1,4 +1,4 @@
-package com.mokon.spring.boot.backend.model.dto;
+package com.mokon.spring.boot.backend.domain;
 
 import com.mokon.spring.boot.backend.model.entity.Role;
 import org.hibernate.validator.constraints.NotEmpty;

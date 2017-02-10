@@ -1,7 +1,7 @@
-package com.mokon.spring.boot.backend.model.validator;
+package com.mokon.spring.boot.backend.domain.validator;
 
-import com.mokon.spring.boot.backend.model.dto.UserCreateForm;
-import com.mokon.spring.boot.backend.model.service.UserService;
+import com.mokon.spring.boot.backend.domain.UserCreateForm;
+import com.mokon.spring.boot.backend.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

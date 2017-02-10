@@ -1,12 +1,12 @@
-package com.mokon.spring.boot.backend.model.service;
+package com.mokon.spring.boot.backend.service.user;
 
 /**
  * Created by marcinokon on 09.02.2017.
  */
 
-import com.mokon.spring.boot.backend.model.dto.UserCreateForm;
+import com.mokon.spring.boot.backend.domain.UserCreateForm;
 import com.mokon.spring.boot.backend.model.entity.User;
-import com.mokon.spring.boot.backend.model.repository.UserRepository;
+import com.mokon.spring.boot.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
