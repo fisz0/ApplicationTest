@@ -1,11 +1,7 @@
+<#import "template.ftl" as template>
+
 <#-- @ftlvariable name="users" type="java.util.List<eu.kielczewski.example.domain.User>" -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>List of Users</title>
-</head>
-<body>
+<@template.htmlTemplate>
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
@@ -23,13 +19,12 @@
     </tr>
     </thead>
     <tbody>
-    <#list users as user>
-    <tr>
-        <td><a href="/user/${user.id}">${user.email}</a></td>
-        <td>${user.role}</td>
-    </tr>
-    </#list>
+        <#list users as user>
+        <tr>
+            <td><a href="/user/${user.id}">${user.email}</a></td>
+            <td>${user.role}</td>
+        </tr>
+        </#list>
     </tbody>
 </table>
-</body>
-</html>
+</@template.htmlTemplate>

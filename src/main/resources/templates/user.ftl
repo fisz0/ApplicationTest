@@ -1,11 +1,7 @@
+<#import "template.ftl" as template>
+
 <#-- @ftlvariable name="user" type="eu.kielczewski.example.domain.User" -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>User details</title>
-</head>
-<body>
+<@template.htmlTemplate>
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
@@ -17,5 +13,4 @@
 <p>E-mail: ${user.email}</p>
 
 <p>Role: ${user.role}</p>
-</body>
-</html>
+</@template.htmlTemplate>

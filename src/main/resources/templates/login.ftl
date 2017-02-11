@@ -1,12 +1,8 @@
+<#import "template.ftl" as template>
+
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Log in</title>
-</head>
-<body>
+<@template.htmlTemplate>
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
@@ -35,8 +31,7 @@
     <button type="submit">Sign in</button>
 </form>
 
-<#if error.isPresent()>
-<p>The email or password you have entered is invalid, try again.</p>
-</#if>
-</body>
-</html>
+    <#if error.isPresent()>
+    <p>The email or password you have entered is invalid, try again.</p>
+    </#if>
+</@template.htmlTemplate>

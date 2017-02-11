@@ -1,19 +1,9 @@
+<#import "template.ftl" as template>
+<#import "/spring.ftl" as spring>
+
+<@template.htmlTemplate>
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="form" type="eu.kielczewski.example.domain.UserCreateForm" -->
-<#import "/spring.ftl" as spring>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Create a new user</title>
-</head>
-<body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-    </ul>
-</nav>
-
 <h1>Create a new user</h1>
 
 <form role="form" name="form" action="" method="post">
@@ -41,14 +31,12 @@
     <button type="submit">Save</button>
 </form>
 
-<@spring.bind "form" />
-<#if spring.status.error>
-<ul>
-    <#list spring.status.errorMessages as error>
-        <li>${error}</li>
-    </#list>
-</ul>
-</#if>
-
-</body>
-</html>
+    <@spring.bind "form" />
+    <#if spring.status.error>
+    <ul>
+        <#list spring.status.errorMessages as error>
+            <li>${error}</li>
+        </#list>
+    </ul>
+    </#if>
+</@template.htmlTemplate>
