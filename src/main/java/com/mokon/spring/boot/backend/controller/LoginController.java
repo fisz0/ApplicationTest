@@ -22,4 +22,9 @@ public class LoginController {
         return new ModelAndView("login", "error", error);
     }
 
+    @GetMapping("/sample")
+    public ModelAndView getSample() {
+        LOGGER.info("Rendering sample.ftl view.");
+        return new ModelAndView("sample");
+    }
 }

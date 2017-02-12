@@ -30,7 +30,6 @@
     </div>
     <button class="btn-primary" type="submit">Sign in</button>
 </form>
-
     <#if error.isPresent()>
     <p>The email or password you have entered is invalid, try again.</p>
     </#if>
