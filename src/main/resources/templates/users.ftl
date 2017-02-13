@@ -2,12 +2,6 @@
 
 <#-- @ftlvariable name="users" type="java.util.List<eu.kielczewski.example.domain.User>" -->
 <@template.htmlTemplate>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/user/create">Create a new user</a></li>
-    </ul>
-</nav>
 <div class="Absolute-Center is-Responsive">
     <h1 class="text-center">List of Users</h1>
     <table class="table table-bordered">
