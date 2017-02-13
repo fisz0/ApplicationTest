@@ -1,12 +1,10 @@
 package com.mokon.spring.boot.backend.service.user;
 
-/**
- * Created by marcinokon on 09.02.2017.
- */
-
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
 import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +16,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
     private final UserRepository userRepository;
 
     @Autowired
@@ -27,16 +26,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getUserById(long id) {
+        LOGGER.debug("Getting user={}", id);
         return Optional.ofNullable(userRepository.findOne(id));
     }
 
     @Override
     public Optional<User> getUserByEmail(String email) {
+        LOGGER.debug("Getting user by email={}", email.replaceFirst("@.*", "@***"));
         return userRepository.findOneByEmail(email);
     }
 
     @Override
     public Collection<User> getAllUsers() {
+        LOGGER.debug("Getting all users");
         return userRepository.findAll(new Sort("email"));
     }
 
@@ -48,4 +50,5 @@ public class UserServiceImpl implements UserService {
         user.setRole(form.getRole());
         return userRepository.save(user);
     }
+
 }

@@ -4,6 +4,8 @@ import com.mokon.spring.boot.backend.domain.UserCreateForm;
 import com.mokon.spring.boot.backend.model.entity.Role;
 import com.mokon.spring.boot.backend.service.user.UserService;
 import com.mokon.spring.boot.backend.domain.validator.UserCreateFormValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,6 +24,9 @@ import java.util.NoSuchElementException;
  */
 @Controller
 public class UserController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
 
     private final UserService userService;
     private final UserCreateFormValidator userCreateFormValidator;
@@ -47,23 +52,35 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
     public ModelAndView getUserCreatePage(Model model) {
-        model.addAttribute("roles", Role.values());
         return new ModelAndView("user_create", "form", new UserCreateForm());
     }
+
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
     public String handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult) {
+        LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);
         if (bindingResult.hasErrors()) {
+            // failed validation
             return "user_create";
         }
         try {
+            LOGGER.info("Saving new user.");
             userService.create(form);
         } catch (DataIntegrityViolationException e) {
+            // probably email already exists - very rare case when multiple admins are adding same user
+            // at the same time and form validation has passed for more than one of them.
+            LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email", e);
             bindingResult.reject("email.exists", "Email already exists");
             return "user_create";
         }
+        // ok, redirect
         return "redirect:/users";
+    }
+
+    @ModelAttribute("roles")
+    public Role[] roles() {
+        return Role.values();
     }
 
 }
