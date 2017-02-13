@@ -8,23 +8,25 @@
         <li><a href="/user/create">Create a new user</a></li>
     </ul>
 </nav>
-
-<h1>List of Users</h1>
-
-<table>
-    <thead>
-    <tr>
-        <th>E-mail</th>
-        <th>Role</th>
-    </tr>
-    </thead>
-    <tbody>
-        <#list users as user>
+<div class="Absolute-Center is-Responsive">
+    <h1 class="text-center">List of Users</h1>
+    <table class="table table-bordered">
+        <thead>
         <tr>
-            <td><a href="/user/${user.id}">${user.email}</a></td>
-            <td>${user.role}</td>
+            <th>E-mail</th>
+            <th>Role</th>
         </tr>
-        </#list>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <#list users as user>
+            <tr>
+                <td><a href="/user/${user.id}">${user.email}</a></td>
+                <td>${user.role}</td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+</div>
+
+
 </@template.htmlTemplate>

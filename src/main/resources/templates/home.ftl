@@ -1,6 +1,6 @@
 <#import "template.ftl" as template>
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="currentUser" type="eu.kielczewski.example.domain.CurrentUser" -->
+<#-- @ftlvariable name="currentUser" type="com.mokon.spring.boot.backend.domain.CurrentUser" -->
 <@template.htmlTemplate>
 <nav role="navigation">
     <ul>
@@ -8,12 +8,10 @@
             <li><a href="/login">Log in</a></li>
         </#if>
         <#if currentUser??>
-            <li>
-                <form action="/logout" method="post">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button type="submit">Log out</button>
-                </form>
-            </li>
+            <form action="/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button type="submit" class="btn btn-def btn-block">Log out</button>
+            </form>
             <li><a href="/user/${currentUser.id}">View myself</a></li>
         </#if>
         <#if currentUser?? && currentUser.role == "ADMIN">

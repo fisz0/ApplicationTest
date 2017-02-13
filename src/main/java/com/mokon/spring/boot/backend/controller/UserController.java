@@ -1,12 +1,14 @@
 package com.mokon.spring.boot.backend.controller;
 
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
+import com.mokon.spring.boot.backend.model.entity.Role;
 import com.mokon.spring.boot.backend.service.user.UserService;
 import com.mokon.spring.boot.backend.domain.validator.UserCreateFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +46,8 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
-    public ModelAndView getUserCreatePage() {
+    public ModelAndView getUserCreatePage(Model model) {
+        model.addAttribute("roles", Role.values());
         return new ModelAndView("user_create", "form", new UserCreateForm());
     }
 

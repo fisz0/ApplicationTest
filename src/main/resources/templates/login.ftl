@@ -9,28 +9,34 @@
     </ul>
 </nav>
 
-<h1>Log in</h1>
+<div class="Absolute-Center is-Responsive">
+    <form role="form" action="/login" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <h1 class="text-center" id="loginBanner">Log in</h1>
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="email" name='email' placeholder="E-mail" autofocus/>
+        </div>
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input class="form-control" type="password" name='password' placeholder="Password" required/>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="remember-me" id="remember-me">Remember me</a>
+            </label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-def btn-block">Login</button>
+        </div>
+        <#if error.isPresent()>
+            <p class="errorParagraph text-center">The email or password you have entered is invalid, try again.</p>
+        </#if>
+    </form>
+</div>
 
-<p>You can use: demo@localhost / demo</p>
+<div id="bottomTip">
+    <p>You can use: demo@localhost / demo</p>
+</div>
 
-<form role="form" action="/login" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-    <div>
-        <label for="email">Email address</label>
-        <input type="email" name="email" id="email" required autofocus/>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required/>
-    </div>
-    <div>
-        <label for="remember-me">Remember me</label>
-        <input type="checkbox" name="remember-me" id="remember-me"/>
-    </div>
-    <button class="btn-primary" type="submit">Sign in</button>
-</form>
-    <#if error.isPresent()>
-    <p>The email or password you have entered is invalid, try again.</p>
-    </#if>
 </@template.htmlTemplate>

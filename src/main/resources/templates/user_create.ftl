@@ -3,40 +3,39 @@
 
 <@template.htmlTemplate>
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="form" type="eu.kielczewski.example.domain.UserCreateForm" -->
-<h1>Create a new user</h1>
+<#-- @ftlvariable name="form" type="com.mokon.spring.boot.backend.domain.UserCreateForm" -->
+<div class="Absolute-Center is-Responsive">
+    <h1>Create a new user</h1>
+    <form role="form" name="form" action="" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-<form role="form" name="form" action="" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-    <div>
-        <label for="email">Email address</label>
-        <input type="email" name="email" id="email" value="${form.email}" required autofocus/>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required/>
-    </div>
-    <div>
-        <label for="passwordRepeated">Repeat</label>
-        <input type="password" name="passwordRepeated" id="passwordRepeated" required/>
-    </div>
-    <div>
-        <label for="role">Role</label>
-        <select name="role" id="role" required>
-            <option <#if form.role == 'USER'>selected</#if>>USER</option>
-            <option <#if form.role == 'ADMIN'>selected</#if>>ADMIN</option>
-        </select>
-    </div>
-    <button type="submit">Save</button>
-</form>
-
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" name="email" id="email" value="${form.email}" required autofocus/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password" id="password" required/>
+        </div>
+        <div class="form-group">
+            <label for="passwordRepeated">Repeat:</label>
+            <input type="password" class="form-control" name="passwordRepeated" id="passwordRepeated" required/>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select name="role" id="role" class="form-control" required>
+                <#list roles as role>
+                    <option <#if form.role == role>selected</#if>>USER</option>
+                </#list>
+            </select>
+        </div>
+        <button class="btn btn-def btn-block" type="submit">Save</button>
+    </form>
     <@spring.bind "form" />
     <#if spring.status.error>
-    <ul>
         <#list spring.status.errorMessages as error>
-            <li>${error}</li>
+            <p class="errorParagraph text-center">${error}</p>
         </#list>
-    </ul>
     </#if>
+</div>
 </@template.htmlTemplate>
