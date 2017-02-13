@@ -23,7 +23,7 @@
 
     <script src="js/library.js"></script>
 
-    <link href="style/main.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <#nested>
