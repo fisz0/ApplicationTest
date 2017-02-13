@@ -58,21 +58,21 @@
                             <li><a href="#">TODO: Separatet section</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Trainings<span style="font-size:16px;"
-                                                   class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
+                    <li><a href="/trainings/${currentUser.id}">Trainings<span style="font-size:16px;"
+                                                                              class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
                     </li>
 
-                    <li><a href="#" id="logoutLink">Training Calendar<span style="font-size:16px;"
-                                                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
+                    <li><a href="/calendar/${currentUser.id}">Training Calendar<span style="font-size:16px;"
+                                                                                     class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
                     </li>
-                    <li><a href="#" id="logoutLink">Progress monitor<span style="font-size:16px;"
-                                                                          class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
+                    <li><a href="/progress/${currentUser.id}">Progress monitor<span style="font-size:16px;"
+                                                                                    class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
                     </li>
-                    <li><a href="#" id="logoutLink">Goals<span style="font-size:16px;"
-                                                               class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                    <li><a href="/goals/${currentUser.id}" id="logoutLink">Goals<span style="font-size:16px;"
+                                                                                      class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
                     </li>
-                    <li><a href="#" id="logoutLink">Logout<span style="font-size:16px;"
-                                                                class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
+                    <li><a href="/logout" id="logoutLink">Logout<span style="font-size:16px;"
+                                                                      class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
                     </li>
                 </ul>
             </div>
