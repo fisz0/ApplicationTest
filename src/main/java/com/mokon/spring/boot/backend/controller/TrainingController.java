@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class TrainingController {
 
+    @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
     @GetMapping("/trainings/{id}")
     public String getTrainingsPage(@PathVariable Long id) {
         return "trainings";

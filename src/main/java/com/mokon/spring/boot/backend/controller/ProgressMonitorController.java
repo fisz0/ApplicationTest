@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ProgressMonitorController {
 
+    @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
     @GetMapping("/progress/{id}")
     public String getTrainingsPage(@PathVariable Long id) {
         return "progress_monitor";

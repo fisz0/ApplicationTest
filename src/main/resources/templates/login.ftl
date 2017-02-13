@@ -23,10 +23,11 @@
         <div class="form-group">
             <button type="submit" class="btn btn-def btn-block">Login</button>
         </div>
-        <#if error.isPresent()>
-            <p class="errorParagraph text-center">The email or password you have entered is invalid, try again.</p>
-        </#if>
     </form>
+    <a href="/register">Register</a>
+    <#if error.isPresent()>
+        <p class="errorParagraph text-center">The email or password you have entered is invalid, try again.</p>
+    </#if>
 </div>
 
 <div id="bottomTip">
