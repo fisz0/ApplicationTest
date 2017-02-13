@@ -4,6 +4,11 @@
 <@template.htmlTemplate>
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="form" type="com.mokon.spring.boot.backend.domain.UserCreateForm" -->
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
 <div class="Absolute-Center is-Responsive">
     <h1>Create a new user</h1>
     <form role="form" name="form" action="" method="post">
@@ -11,15 +16,15 @@
 
         <div class="form-group">
             <label for="email">Email address:</label>
-            <input type="email" class="form-control" name="email" id="email" value="${form.email}" required autofocus/>
+            <input type="email" class="form-control" name="email" id="email" value="${form.email}" placeholder="E-mail" required autofocus/>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" id="password" required/>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required/>
         </div>
         <div class="form-group">
             <label for="passwordRepeated">Repeat:</label>
-            <input type="password" class="form-control" name="passwordRepeated" id="passwordRepeated" required/>
+            <input type="password" class="form-control" name="passwordRepeated" id="passwordRepeated" placeholder="Repeat password" required/>
         </div>
         <div class="form-group">
             <label for="role">Role</label>
