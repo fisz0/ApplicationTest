@@ -39,8 +39,13 @@ public class RegisterController {
     @GetMapping("/register")
     public ModelAndView getUserCreatePage() {
         LOGGER.info("Rendering registration screen.");
-
         return new ModelAndView("register", "form", new UserCreateForm());
+    }
+
+    @GetMapping("/admin/create")
+    public ModelAndView getCreateAdminPage() {
+        LOGGER.info("Rendering administrator registration screen.");
+        return new ModelAndView("admin_create", "form", new UserCreateForm());
     }
 
     @RequestMapping(value = "/register/create", method = RequestMethod.POST)

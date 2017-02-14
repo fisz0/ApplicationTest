@@ -3,8 +3,6 @@
 <#-- @ftlvariable name="user" type="com.mokon.spring.boot.backend.model.entity.User" -->
 <@template.htmlTemplate>
 <div class="Absolute-Center is-Responsive">
-
-    <h1 class="text-center">User details</h1>
     <p>
     <div class="infoLabel">Login:</div>
     ${user.login}</p>

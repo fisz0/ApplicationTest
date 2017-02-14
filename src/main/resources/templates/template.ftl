@@ -52,7 +52,7 @@
                             class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
                         <ul class="dropdown-menu forAnimate" role="menu">
                             <#if currentUser.role == "ADMIN">
-                                <li><a href="/user/create">Create user</a></li>
+                                <li><a href="/admin/create">Create user</a></li>
                                 <li><a href="/users">View all users</a></li>
                             </#if>
                             <li><a href="/user/${currentUser.id}">View myself</a></li>
