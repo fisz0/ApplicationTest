@@ -64,7 +64,7 @@ public class RegisterController {
             return "register";
         }
         // ok, redirect
-        return "redirect:/login";
+        return "redirect:/";
     }
 
 }

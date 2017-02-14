@@ -21,7 +21,8 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
-    <script src="/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.js"></script>
 
     <script src="/js/library.js"></script>
 
@@ -60,21 +61,21 @@
                             <li><a href="#">TODO: Separatet section</a></li>
                         </ul>
                     </li>
-                    <li><a href="/trainings/${currentUser.id}">Trainings<span style="font-size:16px;"
-                                                                              class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
+                    <li><a href="/trainings/${currentUser.id}">Trainings<span
+                        class="menuItem pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
                     </li>
 
-                    <li><a href="/calendar/${currentUser.id}">Training Calendar<span style="font-size:16px;"
-                                                                                     class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
+                    <li><a href="/calendar/${currentUser.id}">Training Calendar<span
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
                     </li>
-                    <li><a href="/progress/${currentUser.id}">Progress monitor<span style="font-size:16px;"
-                                                                                    class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
+                    <li><a href="/progress/${currentUser.id}">Progress monitor<span
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
                     </li>
-                    <li><a href="/goals/${currentUser.id}" id="logoutLink">Goals<span style="font-size:16px;"
-                                                                                      class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                    <li><a href="/goals/${currentUser.id}" id="logoutLink">Goals<span
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
                     </li>
-                    <li><a href="/logout" id="logoutLink">Logout<span style="font-size:16px;"
-                                                                      class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
+                    <li><a href="/logout" id="logoutLink">Logout<span
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
                     </li>
                 </ul>
             </div>
