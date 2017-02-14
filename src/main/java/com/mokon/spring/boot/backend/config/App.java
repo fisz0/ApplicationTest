@@ -11,9 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories(value = "com.mokon.spring.boot.backend.repository")
 @ComponentScan(basePackages = {"com.mokon.spring.boot.backend.service",
-        "com.mokon.spring.boot.backend.config",
-        "com.mokon.spring.boot.backend.controller",
-        "com.mokon.spring.boot.backend.domain.validator"})
+    "com.mokon.spring.boot.backend.config",
+    "com.mokon.spring.boot.backend.controller",
+    "com.mokon.spring.boot.backend.domain.validator"})
 @EntityScan(basePackages = "com.mokon.spring.boot.backend.model.entity")
 public class App extends SpringBootServletInitializer {
 

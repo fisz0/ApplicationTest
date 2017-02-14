@@ -2,7 +2,6 @@ package com.mokon.spring.boot.backend.controller;
 
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
 import com.mokon.spring.boot.backend.domain.validator.UserCreateFormValidator;
-import com.mokon.spring.boot.backend.model.entity.Role;
 import com.mokon.spring.boot.backend.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,11 +71,5 @@ public class UserController {
         }
         // ok, redirect
         return "redirect:/users";
-    }
-
-    @ModelAttribute("roles")
-    public Role[] getRoles() {
-        Role[] roles = Role.values();
-        return roles;
     }
 }

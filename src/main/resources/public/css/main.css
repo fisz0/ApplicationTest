@@ -48,64 +48,57 @@ body {
     max-width: 400px;
 }
 
-.btn{
+.btn {
     border-radius: 0 !important;
 }
 
-
-
-
-
-
-
-
-body,html{
+body, html {
     height: 100%;
 }
 
-nav.sidebar, .main{
+nav.sidebar, .main {
     -webkit-transition: margin 200ms ease-out;
     -moz-transition: margin 200ms ease-out;
     -o-transition: margin 200ms ease-out;
     transition: margin 200ms ease-out;
 }
 
-.main{
+.main {
     padding: 10px 10px 0 10px;
 }
 
 @media (min-width: 765px) {
 
-    .main{
+    .main {
         position: absolute;
         width: calc(100% - 40px);
         margin-left: 40px;
         float: right;
     }
 
-    nav.sidebar:hover + .main{
+    nav.sidebar:hover + .main {
         margin-left: 200px;
     }
 
-    nav.sidebar.navbar.sidebar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    nav.sidebar.navbar.sidebar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
         margin-left: 0px;
     }
 
-    nav.sidebar .navbar-brand, nav.sidebar .navbar-header{
+    nav.sidebar .navbar-brand, nav.sidebar .navbar-header {
         text-align: center;
         width: 100%;
         margin-left: 0px;
     }
 
-    nav.sidebar a{
+    nav.sidebar a {
         padding-right: 13px;
     }
 
-    nav.sidebar .navbar-nav > li:first-child{
+    nav.sidebar .navbar-nav > li:first-child {
         border-top: 1px #e5e5e5 solid;
     }
 
-    nav.sidebar .navbar-nav > li{
+    nav.sidebar .navbar-nav > li {
         border-bottom: 1px #e5e5e5 solid;
     }
 
@@ -120,15 +113,15 @@ nav.sidebar, .main{
         box-shadow: none;
     }
 
-    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+    nav.sidebar .navbar-collapse, nav.sidebar .container-fluid {
         padding: 0 0px 0 0px;
     }
 
-    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
     }
 
-    nav.sidebar{
+    nav.sidebar {
         width: 200px;
         height: 100%;
         margin-left: -160px;
@@ -140,40 +133,41 @@ nav.sidebar, .main{
         width: 100%;
     }
 
-    nav.sidebar:hover{
+    nav.sidebar:hover {
         margin-left: 0px;
     }
 
-    .forAnimate{
+    .forAnimate {
         opacity: 0;
     }
 }
 
 @media (min-width: 1330px) {
 
-    .main{
+    .main {
         width: calc(100% - 200px);
         margin-left: 200px;
     }
 
-    nav.sidebar{
+    nav.sidebar {
         margin-left: 0px;
         float: left;
     }
 
-    nav.sidebar .forAnimate{
+    nav.sidebar .forAnimate {
         opacity: 1;
     }
 }
 
-nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
+nav.sidebar .navbar-nav .open .dropdown-menu > li > a:hover, nav.sidebar .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #CCC;
     background-color: transparent;
 }
 
-nav:hover .forAnimate{
+nav:hover .forAnimate {
     opacity: 1;
 }
-section{
+
+section {
     padding-left: 15px;
 }
