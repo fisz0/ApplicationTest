@@ -1,6 +1,7 @@
 package com.mokon.spring.boot.backend.domain.validator;
 
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
+import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,7 @@ public class UserCreateFormValidator implements Validator {
         UserCreateForm form = (UserCreateForm) target;
         validatePasswords(errors, form);
         validateEmail(errors, form);
+        validateLogin(errors, form);
     }
 
     private void validatePasswords(Errors errors, UserCreateForm form) {
@@ -42,6 +44,12 @@ public class UserCreateFormValidator implements Validator {
     private void validateEmail(Errors errors, UserCreateForm form) {
         if (userService.getUserByEmail(form.getEmail()).isPresent()) {
             errors.reject("email.exists", "User with this email already exists");
+        }
+    }
+
+    private void validateLogin(Errors errors, UserCreateForm form) {
+        if (userService.getUserByLogin(form.getLogin()).isPresent()) {
+            errors.reject("login.exists", "User with this login already exists");
         }
     }
 }

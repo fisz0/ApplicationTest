@@ -15,6 +15,8 @@ public interface UserService {
 
     Optional<User> getUserByEmail(String email);
 
+    Optional<User> getUserByLogin(String login);
+
     Collection<User> getAllUsers();
 
     User create(UserCreateForm form);

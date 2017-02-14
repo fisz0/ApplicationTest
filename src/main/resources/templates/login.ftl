@@ -9,7 +9,7 @@
         <h1 class="text-center" id="loginBanner">Log in</h1>
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input class="form-control" type="email" name='email' placeholder="E-mail" autofocus/>
+            <input class="form-control" type="login" name='login' placeholder="Login" autofocus/>
         </div>
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -26,12 +26,12 @@
     </form>
     <a href="/register">Register</a>
     <#if error.isPresent()>
-        <p class="errorParagraph text-center">The email or password you have entered is invalid, try again.</p>
+        <p class="errorParagraph text-center">The login or password you have entered is invalid, try again.</p>
     </#if>
 </div>
 
 <div id="bottomTip">
-    <p>You can use: demo@localhost / demo</p>
+    <p>You can use: demo / demo</p>
 </div>
 
 </@template.htmlTemplate>

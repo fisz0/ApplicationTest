@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +50,7 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
-    public ModelAndView getUserCreatePage(Model model) {
+    public ModelAndView getUserCreatePage() {
         return new ModelAndView("user_create", "form", new UserCreateForm());
     }
 
@@ -61,26 +60,23 @@ public class UserController {
     public String handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult) {
         LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);
         if (bindingResult.hasErrors()) {
-            // failed validation
             return "user_create";
         }
         try {
             LOGGER.info("Saving new user.");
             userService.create(form);
         } catch (DataIntegrityViolationException e) {
-            // probably email already exists - very rare case when multiple admins are adding same user
-            // at the same time and form validation has passed for more than one of them.
-            LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email", e);
-            bindingResult.reject("email.exists", "Email already exists");
+            LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email or login", e);
+            bindingResult.reject("data.exists", "Email or login already exists");
             return "user_create";
         }
         // ok, redirect
         return "redirect:/users";
     }
 
-    //return common used array with Roles
     @ModelAttribute("roles")
-    public Role[] roles() {
-        return Role.values();
+    public Role[] getRoles() {
+        Role[] roles = Role.values();
+        return roles;
     }
 }

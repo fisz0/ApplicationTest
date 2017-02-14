@@ -21,10 +21,4 @@ public class LoginController {
     public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
         return new ModelAndView("login", "error", error);
     }
-
-    @GetMapping("/sample")
-    public ModelAndView getSample() {
-        LOGGER.info("Rendering sample.ftl view.");
-        return new ModelAndView("sample");
-    }
 }

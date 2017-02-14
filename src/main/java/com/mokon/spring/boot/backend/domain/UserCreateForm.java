@@ -19,7 +19,16 @@ public class UserCreateForm {
     private String passwordRepeated = "";
 
     @NotNull
-    private Role role = Role.USER;
+    private Role role;
+
+    @NotEmpty
+    private String name = "";
+
+    @NotEmpty
+    private String lastName = "";
+
+    @NotEmpty
+    private String login = "";
 
     public String getEmail() {
         return email;
@@ -51,5 +60,29 @@ public class UserCreateForm {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

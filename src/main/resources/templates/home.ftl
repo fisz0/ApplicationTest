@@ -3,6 +3,8 @@
 <#-- @ftlvariable name="currentUser" type="com.mokon.spring.boot.backend.domain.CurrentUser" -->
 <@template.htmlTemplate>
     <#if !currentUser??>
-    <meta HTTP-EQUIV="REFRESH" content="0; /login">
+    <script>redirectToLoginPage()</script>
+    <#else>
+    HOME PAGE
     </#if>
 </@template.htmlTemplate>

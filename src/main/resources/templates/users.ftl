@@ -7,6 +7,9 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>Login</th>
+            <th>Name</th>
+            <th>Last name</th>
             <th>E-mail</th>
             <th>Role</th>
         </tr>
@@ -14,7 +17,10 @@
         <tbody>
             <#list users as user>
             <tr>
-                <td><a href="/user/${user.id}">${user.email}</a></td>
+                <td><a href="/user/${user.id}">${user.login}</a></td>
+                <td>${user.name}</td>
+                <td>${user.lastName}</td>
+                <td>${user.email}</td>
                 <td>${user.role}</td>
             </tr>
             </#list>
