@@ -1,5 +1,5 @@
 <#import "template.ftl" as template>
-
+<#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="users" type="java.util.List<com.mokon.spring.boot.backend.model.entity.User>" -->
 <@template.htmlTemplate>
 <div class="Absolute-Center is-Responsive">
@@ -22,9 +22,10 @@
                 <td>${user.email}</td>
                 <td>${user.role}</td>
                 <#if user.id!=currentUser.id>
-                    <td
-                    <a href="/delete/${user.id}" id="deleteUserLink"><span
-                        class="pull-right hidden-xs showopacity glyphicon glyphicon-remove"></span></a>
+                    <td>
+                        <button type="button" onclick="deleteUser(${user.id})"><span
+                                class="pull-right hidden-xs showopacity glyphicon glyphicon-remove"></span>
+
                     </td>
                 </#if>
             </tr>

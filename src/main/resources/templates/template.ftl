@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+
     <title>Home page</title>
 
     <!-- Latest compiled and minified CSS -->
@@ -48,9 +49,9 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <span
-                            class="caret"></span><span
-                            style="font-size:16px;"
-                            class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+                                class="caret"></span><span
+                                style="font-size:16px;"
+                                class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
                         <ul class="dropdown-menu forAnimate" role="menu">
                             <#if currentUser.role == "ADMIN">
                                 <li><a href="/admin/create">Create user</a></li>
@@ -62,20 +63,20 @@
                         </ul>
                     </li>
                     <li><a href="/trainings/${currentUser.id}">Trainings<span
-                        class="menuItem pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
+                            class="menuItem pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
                     </li>
 
                     <li><a href="/calendar/${currentUser.id}">Training Calendar<span
-                        class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
                     </li>
                     <li><a href="/progress/${currentUser.id}">Progress monitor<span
-                        class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
                     </li>
                     <li><a href="/goals/${currentUser.id}" id="logoutLink">Goals<span
-                        class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
                     </li>
                     <li><a href="/logout" id="logoutLink">Logout<span
-                        class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
+                            class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
                     </li>
                 </ul>
             </div>

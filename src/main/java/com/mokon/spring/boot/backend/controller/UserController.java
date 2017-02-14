@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.NoSuchElementException;
@@ -41,12 +39,12 @@ public class UserController {
     @RequestMapping("/user/{id}")
     public ModelAndView getUserPage(@PathVariable Long id) {
         return new ModelAndView("user", "user", userService.getUserById(id)
-            .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
+                .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
     }
 
     @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
-    @RequestMapping("/delete/{id}")
-    public ModelAndView deleteUser(@PathVariable Long id) {
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ModelAndView deleteUser(@PathVariable("id") Long id) {
         userService.delete(id);
         return new ModelAndView("users", "users", userService.getAllUsers());
     }
