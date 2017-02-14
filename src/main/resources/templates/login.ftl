@@ -3,7 +3,7 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
 <@template.htmlTemplate>
-<div class="Absolute-Center is-Responsive">
+<div class="Absolute-Center is-Responsive" id="loginForm">
     <form role="form" action="/login" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <h1 class="text-center" id="loginBanner">Log in</h1>

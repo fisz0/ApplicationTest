@@ -25,7 +25,6 @@ public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-
     private final UserService userService;
     private final UserCreateFormValidator userCreateFormValidator;
 
@@ -45,31 +44,5 @@ public class UserController {
     public ModelAndView getUserPage(@PathVariable Long id) {
         return new ModelAndView("user", "user", userService.getUserById(id)
             .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
-    }
-
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/user/create", method = RequestMethod.GET)
-    public ModelAndView getUserCreatePage() {
-        return new ModelAndView("user_create", "form", new UserCreateForm());
-    }
-
-
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/user/create", method = RequestMethod.POST)
-    public String handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult) {
-        LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return "user_create";
-        }
-        try {
-            LOGGER.info("Saving new user.");
-            userService.create(form);
-        } catch (DataIntegrityViolationException e) {
-            LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email or login", e);
-            bindingResult.reject("data.exists", "Email or login already exists");
-            return "user_create";
-        }
-        // ok, redirect
-        return "redirect:/users";
     }
 }
