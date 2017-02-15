@@ -24,5 +24,4 @@ public class UsersController {
     public ModelAndView getUsersPage() {
         return new ModelAndView("users", "users", userService.getAllUsers());
     }
-
 }

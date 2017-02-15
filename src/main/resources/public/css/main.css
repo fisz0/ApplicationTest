@@ -1,8 +1,8 @@
 .Absolute-Center.is-Responsive {
     width: 50%;
     height: 100%;
-    min-width: 300px;
-    max-width: 400px;
+    min-width: 450px;
+    max-width: 600px;
     padding: 40px;
     float: left;
 }
@@ -55,7 +55,6 @@ body, html {
     height: 100%;
     font-weight: bold;
     font-family: "Comic Sans MS";
-    overflow-x: hidden;
 }
 
 nav.sidebar, .main {
@@ -176,4 +175,42 @@ nav:hover .forAnimate {
 
 section {
     padding-left: 15px;
+}
+
+.linkBtn {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    /*border is optional*/
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}
+
+.divBordered {
+    border-radius: 0px;
+    border: 2px solid #444444;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+table {
+    margin: 15px;
+    width: 100%;
+}
+
+div.inject {
+    width: 100px;
+    overflow: auto;
+}
+
+td {
+    border: 1px solid #000;
+    word-break: break-all;
+}
+
+tr td:last-child {
+    width: 1%;
+    white-space: nowrap;
 }

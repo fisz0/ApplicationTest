@@ -1,7 +1,4 @@
-<#import "template.ftl" as template>
-
 <#-- @ftlvariable name="user" type="com.mokon.spring.boot.backend.model.entity.User" -->
-<@template.htmlTemplate>
 <div class="Absolute-Center is-Responsive">
     <p>
     <div class="infoLabel">Login:</div>
@@ -22,4 +19,3 @@
     <div class="infoLabel">Role:</div>
     ${user.role}</p>
 </div>
-</@template.htmlTemplate>

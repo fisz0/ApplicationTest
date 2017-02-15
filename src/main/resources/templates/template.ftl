@@ -28,12 +28,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.js"></script>
 
     <script src="/js/library.js"></script>
+    <script src="/js/jquery-confirm.js"></script>
 
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/jquery-confirm.css" rel="stylesheet" type="text/css"/>
+
 </head>
 <body>
     <#if currentUser??>
-    <nav class="navbar navbar-default sidebar" role="navigation">
+    <nav class="navbar navbar-default sidebar" id="sidebar" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -46,14 +49,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home<span style="font-size:16px;"
-                                                             class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                    <li class="active"><a href="/">Home<span
+                        class="menu Itempull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <span
-                                class="caret"></span><span
-                                style="font-size:16px;"
-                                class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+                            class="caret"></span><span
+                            class="menuItem pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
                         <ul class="dropdown-menu forAnimate" role="menu">
                             <#if currentUser.role == "ADMIN">
                                 <li><a href="/admin/create">Create user</a></li>
@@ -65,20 +67,20 @@
                         </ul>
                     </li>
                     <li><a href="/trainings/${currentUser.id}">Trainings<span
-                            class="menuItem pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
+                        class="menuItem pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a>
                     </li>
 
                     <li><a href="/calendar/${currentUser.id}">Training Calendar<span
-                            class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-calendar"></span></a>
                     </li>
                     <li><a href="/progress/${currentUser.id}">Progress monitor<span
-                            class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-signal"></span></a>
                     </li>
                     <li><a href="/goals/${currentUser.id}" id="logoutLink">Goals<span
-                            class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
                     </li>
                     <li><a href="/logout" id="logoutLink">Logout<span
-                            class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
+                        class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a>
                     </li>
                 </ul>
             </div>
