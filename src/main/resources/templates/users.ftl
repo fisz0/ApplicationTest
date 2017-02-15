@@ -2,7 +2,7 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="users" type="java.util.List<com.mokon.spring.boot.backend.model.entity.User>" -->
 <@template.htmlTemplate>
-<div class="Absolute-Center is-Responsive col-lg-4 col-sm-6 col-xs-12 divBordered" id="usersTable">
+<div class="Absolute-Center is-Responsive col-lg-4 col-sm-6 col-xs-12 divBordered usersTable" id="userTable">
     <table class="table table-bordered table-responsive" id="usersTable">
         <thead>
         <tr>
@@ -25,18 +25,17 @@
                 <td class="fit">${user.email}</td>
                 <td>${user.role}</td>
                 <#if user.id==currentUser.id>
-                    <td>
-                        <button type="button" disabled="disabled"
-                                class="btn btn-default pull-right showopacity glyphicon glyphicon-remove"
+                    <td class="removeUserCell">
+                        <button type="button" disabled="disabled" id="${user.id}"
+                                class="deleteUserBtn btn btn-default pull-right showopacity glyphicon glyphicon-remove"
                                 onclick="deleteUser(${user.id})">
                         </button>
                     </td>
                 <#else>
-                    <td>
-                        <button type="button"
-                                class="btn btn-block btn-danger showopacity glyphicon glyphicon-remove"
-                                onclick="deleteUser(${user.id})">
-                        </button>
+                    <td class="removeUserCell">
+                        <button type="button" id="${user.id}"
+                                class="deleteUserBtn btn btn-block btn-danger showopacity glyphicon glyphicon-remove"
+                                onclick="deleteUser(${user.id})"></button>
 
                     </td>
                 </#if>

@@ -196,7 +196,6 @@ section {
 }
 
 table {
-    margin: 15px;
     width: 100%;
 }
 
@@ -213,4 +212,12 @@ td {
 tr td:last-child {
     width: 1%;
     white-space: nowrap;
+}
+
+#userTable td:last-child {
+    padding: 0;
+    text-align: center;
+}
+.deleteUserBtn{
+    border-width: 0;
 }

@@ -54,3 +54,16 @@ $(document).ready(function () {
         })
     }
 });
+function removeUserButtonsResize() {
+    var buttons = document.getElementsByClassName("deleteUserBtn")
+    for (var i = 0; i < buttons.length; i++) {
+        $('#' + $(buttons[i]).attr('id')).css("height", $(buttons[i].parentNode).height());
+    }
+}
+window.onload = function () {
+    removeUserButtonsResize();
+};
+
+window.onresize = function () {
+    removeUserButtonsResize();
+};
