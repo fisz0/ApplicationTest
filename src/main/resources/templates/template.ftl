@@ -36,7 +36,9 @@
 </head>
 <body>
     <#if currentUser??>
-    <nav class="navbar navbar-default sidebar" id="sidebar" role="navigation">
+    <nav class="navbar navbar-fixed-top navbar-default sidebar" data-spy="affix"
+         data-offset-top="205" id="sidebar"
+         role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -50,7 +52,7 @@
             <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home<span
-                        class="menu Itempull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                        class="menu pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <span

@@ -218,6 +218,15 @@ tr td:last-child {
     padding: 0;
     text-align: center;
 }
-.deleteUserBtn{
+
+.deleteUserBtn {
     border-width: 0;
+}
+
+.affix {
+    top: 20px;
+}
+
+.navbar-fixed-top {
+    -webkit-backface-visibility: hidden;
 }
