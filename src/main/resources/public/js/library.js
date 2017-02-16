@@ -1,10 +1,19 @@
+window.onload = function () {
+    removeUserButtonsResize();
+    removeUserButtonHandler();
+};
+
+window.onresize = function () {
+    removeUserButtonsResize();
+};
+
 function redirectToLoginPage() {
     document.getElementsByTagName("head")[0].innerHTML += '<meta HTTP-EQUIV="REFRESH" content="0; /login">';
 }
 
-function deleteUser(id) {
+function deleteUser(event) {
     console.log("Delete user button clicked");
-
+    var buttonClicked = event.target;
     var header = $("meta[name='_csrf_header']").attr("content");
     var token = $("meta[name='_csrf']").attr("content");
 
@@ -17,7 +26,7 @@ function deleteUser(id) {
                 action: function () {
                     console.log("Delete user action- confirmed.");
                     $.ajax({
-                        url: "/delete/" + id,
+                        url: "/delete/" + $(buttonClicked).attr("id"),
                         type: 'DELETE',
                         contentType: 'application/json',
                         dataType: 'text',
@@ -60,10 +69,11 @@ function removeUserButtonsResize() {
         $('#' + $(buttons[i]).attr('id')).css("height", $(buttons[i].parentNode).height());
     }
 }
-window.onload = function () {
-    removeUserButtonsResize();
-};
 
-window.onresize = function () {
-    removeUserButtonsResize();
-};
+function removeUserButtonHandler() {
+    var buttons = document.getElementsByClassName("deleteUserBtn")
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', deleteUser);
+    }
+}
+
