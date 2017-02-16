@@ -214,7 +214,7 @@ tr td:last-child {
     white-space: nowrap;
 }
 
-#userTable td:last-child {
+#usersTable td:last-child {
     padding: 0;
     text-align: center;
 }

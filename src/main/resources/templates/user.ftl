@@ -1,5 +1,5 @@
 <#-- @ftlvariable name="user" type="com.mokon.spring.boot.backend.model.entity.User" -->
-<div class="Absolute-Center is-Responsive">
+<div class="Absolute-Center is-Responsive userDetails">
     <p>
     <div class="infoLabel">Login:</div>
     ${user.login}</p>

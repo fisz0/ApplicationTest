@@ -1,18 +1,18 @@
 window.onload = function () {
-    removeUserButtonsResize();
-    removeUserButtonHandler();
+    loadUsersTable();
+    usersTableActionsHandler();
 };
 
 window.onresize = function () {
     removeUserButtonsResize();
-};
+}
 
 function redirectToLoginPage() {
     document.getElementsByTagName("head")[0].innerHTML += '<meta HTTP-EQUIV="REFRESH" content="0; /login">';
 }
 
 function deleteUser(event) {
-    console.log("Delete user button clicked");
+    console.info("Delete user button clicked");
     var buttonClicked = event.target;
     var header = $("meta[name='_csrf_header']").attr("content");
     var token = $("meta[name='_csrf']").attr("content");
@@ -24,7 +24,7 @@ function deleteUser(event) {
             confirm: {
                 btnClass: 'btn-danger',
                 action: function () {
-                    console.log("Delete user action- confirmed.");
+                    console.info("Delete user action- confirmed.");
                     $.ajax({
                         url: "/delete/" + $(buttonClicked).attr("id"),
                         type: 'DELETE',
@@ -34,13 +34,13 @@ function deleteUser(event) {
                             xhr.setRequestHeader(header, token);
                         },
                         success: function () {
-                            console.log("Delete action finished with success. Redirecting to /users page.");
-                            window.location.href = "/users";
+                            console.info("Delete action finished with success. Dynamically reloading users table content.");
+                            loadUsersTable();
                         },
                         error: function (request, message, error) {
-                            console.log(request);
-                            console.log(message);
-                            console.log(error);
+                            console.error(request);
+                            console.error(message);
+                            console.error(error);
                         }
                     });
                 }
@@ -48,21 +48,36 @@ function deleteUser(event) {
             cancel: {
                 btnClass: 'btn-success',
                 action: function () {
-                    console.log("Delete user action- cancelled.");
+                    console.info("Delete user action- cancelled.");
                 },
             }
         }
     });
 }
+function usersTableActionsHandler() {
+    $('#userTableContainer').on('click', function () {
+        removeUserHandler();
+    });
 
-$(document).ready(function () {
+    $('#userTableContainer').on('click', function () {
+        userDetailsPanelInjectHandler();
+    });
+}
+
+function loadUsersTable() {
+    $('#userTableContainer').load("users_table", function () {
+        removeUserButtonsResize();
+    });
+}
+
+function userDetailsPanelInjectHandler() {
     var buttons = document.getElementsByClassName("linkBtn");
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             $('#injectContainer').load("user/" + $(this).attr('name'));
         })
     }
-});
+}
 function removeUserButtonsResize() {
     var buttons = document.getElementsByClassName("deleteUserBtn")
     for (var i = 0; i < buttons.length; i++) {
@@ -70,10 +85,9 @@ function removeUserButtonsResize() {
     }
 }
 
-function removeUserButtonHandler() {
+function removeUserHandler() {
     var buttons = document.getElementsByClassName("deleteUserBtn")
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', deleteUser);
     }
 }
-
