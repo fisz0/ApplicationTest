@@ -28,7 +28,7 @@
 </head>
 <body>
     <#if currentUser??>
-    <nav class="navbar navbar-fixed-top navbar-default sidebar" data-spy="affix"
+    <nav class="navbar navbar-fixed-top navbar-default sidebar affix-top"
          data-offset-top="205" id="sidebar"
          role="navigation">
         <div class="container-fluid">
