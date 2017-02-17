@@ -13,7 +13,20 @@ nav.sidebar, .main {
     padding: 10px 10px 0 10px;
 }
 
+@media (max-width: 765px) {
+
+    .Absolute-Center{
+        margin-top: 60px;
+        margin-left: 10px;
+    }
+}
+
 @media (min-width: 765px) {
+
+    .Absolute-Center{
+        margin-left: 50px;
+        margin-top: 10px;
+    }
 
     .main {
         position: absolute;
@@ -89,6 +102,11 @@ nav.sidebar, .main {
 }
 
 @media (min-width: 1330px) {
+
+    .Absolute-Center{
+        margin-left: 210px;
+        margin-top: 10px;
+    }
 
     .main {
         width: calc(100% - 200px);
