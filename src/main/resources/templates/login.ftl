@@ -3,7 +3,7 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
 <@template.htmlTemplate>
-<div class="Absolute-Center is-Responsive" id="loginForm">
+<div class="Absolute-Center is-Responsive loginPanel" id="loginForm">
     <form role="form" action="/login" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <h1 class="text-center" id="loginBanner">Log in</h1>
@@ -28,10 +28,11 @@
     <#if error.isPresent()>
         <p class="errorParagraph text-center">The login or password you have entered is invalid, try again.</p>
     </#if>
+    <div id="bottomTip">
+        <p>You can use: demo / demo</p>
+    </div>
 </div>
 
-<div id="bottomTip">
-    <p>You can use: demo / demo</p>
-</div>
+
 
 </@template.htmlTemplate>

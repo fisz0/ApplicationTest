@@ -13,17 +13,28 @@ nav.sidebar, .main {
     padding: 10px 10px 0 10px;
 }
 
-@media (max-width: 765px) {
+@media (max-width: 764px) {
 
-    .Absolute-Center{
+    .basicRightPanel {
         margin-top: 60px;
         margin-left: 10px;
+    }
+
+    .basicLeftPanel {
+        margin-top: 60px;
+        margin-left: 10px;
+
     }
 }
 
 @media (min-width: 765px) {
 
-    .Absolute-Center{
+    .basicRightPanel {
+        margin-left: 50px;
+        margin-top: 10px;
+    }
+
+    .basicLeftPanel {
         margin-left: 50px;
         margin-top: 10px;
     }
@@ -103,7 +114,12 @@ nav.sidebar, .main {
 
 @media (min-width: 1330px) {
 
-    .Absolute-Center{
+    .basicRightPanel {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .basicLeftPanel {
         margin-left: 210px;
         margin-top: 10px;
     }

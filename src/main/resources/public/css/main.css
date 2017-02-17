@@ -17,8 +17,22 @@
     right: 0;
 }
 
+.basicPanel{
+    border-radius: 0px;
+    background-color: #f8f8f8;
+    width: 30%;
+    height: 100%;
+    min-width: 450px;
+    max-width: 600px;
+    padding: 40px;
+    float: left;
+}
+
 #loginForm {
     position: absolute;
+    margin: auto;
+    height: 40%;
+    width: auto;
 }
 
 .errorParagraph {
@@ -71,13 +85,6 @@ body, html {
     /*border is optional*/
     border-bottom: 1px solid #444;
     cursor: pointer;
-}
-
-.divBordered {
-    border-radius: 0px;
-    padding: 20px;
-    width: 200px;
-    height: 150px;
 }
 
 table {
