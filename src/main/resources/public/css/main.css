@@ -17,21 +17,24 @@
     right: 0;
 }
 
-.basicPanel{
+.basicPanel {
     border-radius: 0px;
     background-color: #f8f8f8;
     width: 30%;
-    height: 100%;
-    min-width: 450px;
-    max-width: 600px;
+    height: 50%;
+    min-width: 30%;
     padding: 40px;
     float: left;
+    overflow: auto;
+}
+.basicBottomPanel{
+    height: calc(50% - 30px);
 }
 
 #loginForm {
     position: absolute;
     margin: auto;
-    height: 40%;
+    height: 50%;
     width: auto;
 }
 

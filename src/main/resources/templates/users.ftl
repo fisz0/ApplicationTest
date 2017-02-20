@@ -7,4 +7,7 @@
 <div id="userDetailsPanel" class="basicPanel basicRightPanel">
 
 </div>
+<div id="usersBottomPanel" class="basicPanel basicBottomPanel">
+
+</div>
 </@template.htmlTemplate>
