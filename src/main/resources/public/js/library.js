@@ -1,10 +1,9 @@
-window.onload = function () {
-    loadUsersTable();
-    usersTableActionsHandler();
-};
-
 window.onresize = function () {
     removeUserButtonsResize();
+}
+
+window.onload = function () {
+    loadUsersTable();
 }
 
 function redirectToLoginPage() {
@@ -54,19 +53,12 @@ function deleteUser(event) {
         }
     });
 }
-function usersTableActionsHandler() {
-    $('#userTableContainer').on('click', function () {
-        removeUserHandler();
-    });
-
-    $('#userTableContainer').on('click', function () {
-        userDetailsPanelInjectHandler();
-    });
-}
 
 function loadUsersTable() {
     $('#userTableContainer').load("users_table", function () {
         removeUserButtonsResize();
+        userDetailsPanelInjectHandler();
+        removeUserHandler();
     });
 }
 
@@ -74,7 +66,7 @@ function userDetailsPanelInjectHandler() {
     var buttons = document.getElementsByClassName("linkBtn");
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
-            $('#injectContainer').load("user/" + $(this).attr('name'));
+            $('#userDetailsPanel').load("user/" + $(this).attr('name'));
         })
     }
 }
