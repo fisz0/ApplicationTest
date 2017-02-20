@@ -1,5 +1,6 @@
 package com.mokon.spring.boot.backend.controller;
 
+import com.mokon.spring.boot.backend.domain.AddNoteForm;
 import com.mokon.spring.boot.backend.domain.UserUpdateForm;
 import com.mokon.spring.boot.backend.domain.validator.UserCreateFormValidator;
 import com.mokon.spring.boot.backend.service.user.UserService;
@@ -66,6 +67,16 @@ public class UserController {
             return "/update_user";
         }
         userService.update(form);
+        return "redirect:/";
+    }
+
+    @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
+    @PostMapping("/update")
+    public String addNote(@Valid @ModelAttribute("updateForm") AddNoteForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/update_user";
+        }
+        userService.addNote(form);
         return "redirect:/";
     }
 }

@@ -3,7 +3,7 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
 <#-- @ftlvariable name="form" type="com.mokon.spring.boot.backend.domain.UserCreateForm" -->
 <@template.htmlTemplate>
-<div class="basicPanel basicLeftPanel">
+<div class="basicPanel basicLeftPanel" xmlns="http://www.w3.org/1999/html">
     <form role="form" name="updateForm" action="/update" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -39,6 +39,10 @@
         </#list>
     </#if>
 </div>
-<div class="basicPanel basicRightPanel"></div>
+<div id="userNotesTable" class="basicPanel basicRightPanel">
+    <button type="button" id="addNoteBtn"
+            class="btn btn-block btn-success glyphicon glyphicon-pencil">
+    </button>
+</div>
 <div class="basicPanel basicBottomPanel"></div>
 </@template.htmlTemplate>

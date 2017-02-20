@@ -27,8 +27,19 @@
     float: left;
     overflow: auto;
 }
-.basicBottomPanel{
+
+.basicBottomPanel {
     height: calc(50% - 30px);
+}
+
+#notesTable{
+    margin-top: 10px;
+}
+
+textarea {
+    box-sizing: border-box;
+    height: 80%;
+    width: 100%;
 }
 
 #loginForm {

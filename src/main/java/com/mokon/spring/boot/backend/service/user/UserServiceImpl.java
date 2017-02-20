@@ -1,8 +1,10 @@
 package com.mokon.spring.boot.backend.service.user;
 
+import com.mokon.spring.boot.backend.domain.AddNoteForm;
 import com.mokon.spring.boot.backend.domain.CurrentUser;
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
 import com.mokon.spring.boot.backend.domain.UserUpdateForm;
+import com.mokon.spring.boot.backend.model.entity.Note;
 import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.repository.UserRepository;
 import org.slf4j.Logger;
@@ -77,6 +79,16 @@ public class UserServiceImpl implements UserService {
         user.setLogin(form.getLogin());
         user.setName(form.getName());
         user.setLastName(form.getLastName());
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User addNote(AddNoteForm form) {
+        User user = userRepository.findOne(((CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        Note note = new Note();
+        note.setNote(form.getNote());
+        note.setDate(form.getDate());
+        user.addNote(note);
         return userRepository.save(user);
     }
 }

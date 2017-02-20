@@ -1,6 +1,7 @@
 package com.mokon.spring.boot.backend.model.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -29,6 +30,9 @@ public class User {
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "notes", cascade = CascadeType.ALL)
+    private Set<Note> notes;
 
     public Long getId() {
         return id;
@@ -84,5 +88,13 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Set<Note> getNotes() {
+        return notes;
+    }
+
+    public void addNote(Note note) {
+        this.notes.add(note);
     }
 }
