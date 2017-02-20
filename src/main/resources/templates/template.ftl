@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.js"></script>
     <script src="/js/library.js"></script>
+    <script src="/js/users_management.js"></script>
     <script src="/js/jquery-confirm.js"></script>
     <link href="/css/main.css" rel="stylesheet" type="text/css"/>
     <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
