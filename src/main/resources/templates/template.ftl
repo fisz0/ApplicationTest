@@ -57,7 +57,7 @@
                                 <li><a href="/admin/create">Create user</a></li>
                                 <li><a href="/users">View all users</a></li>
                             </#if>
-                            <li><a href="/user/${currentUser.id}">View myself</a></li>
+                            <li><a href="/update_user">Profile</a></li>
                             <li class="divider"></li>
                             <li><a href="#">TODO: Separatet section</a></li>
                         </ul>

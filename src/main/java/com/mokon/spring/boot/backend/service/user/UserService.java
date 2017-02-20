@@ -1,6 +1,7 @@
 package com.mokon.spring.boot.backend.service.user;
 
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
+import com.mokon.spring.boot.backend.domain.UserUpdateForm;
 import com.mokon.spring.boot.backend.model.entity.User;
 
 import java.util.Collection;
@@ -22,5 +23,7 @@ public interface UserService {
     User create(UserCreateForm form);
 
     void delete(Long id);
+
+    User update(UserUpdateForm form);
 
 }

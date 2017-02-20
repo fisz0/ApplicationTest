@@ -1,12 +1,15 @@
 package com.mokon.spring.boot.backend.service.user;
 
+import com.mokon.spring.boot.backend.domain.CurrentUser;
 import com.mokon.spring.boot.backend.domain.UserCreateForm;
+import com.mokon.spring.boot.backend.domain.UserUpdateForm;
 import com.mokon.spring.boot.backend.model.entity.User;
 import com.mokon.spring.boot.backend.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -64,5 +67,16 @@ public class UserServiceImpl implements UserService {
     public void delete(Long id) {
         LOGGER.info("Deleting user with id={}", id);
         userRepository.delete(id);
+    }
+
+    @Override
+    public User update(UserUpdateForm form) {
+        LOGGER.debug("Updating existing user.");
+        User user = userRepository.findOne(((CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        user.setEmail(form.getEmail());
+        user.setLogin(form.getLogin());
+        user.setName(form.getName());
+        user.setLastName(form.getLastName());
+        return userRepository.save(user);
     }
 }

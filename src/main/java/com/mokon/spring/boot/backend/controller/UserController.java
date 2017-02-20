@@ -1,5 +1,6 @@
 package com.mokon.spring.boot.backend.controller;
 
+import com.mokon.spring.boot.backend.domain.UserUpdateForm;
 import com.mokon.spring.boot.backend.domain.validator.UserCreateFormValidator;
 import com.mokon.spring.boot.backend.service.user.UserService;
 import org.slf4j.Logger;
@@ -7,13 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.NoSuchElementException;
 
 /**
@@ -47,10 +47,25 @@ public class UserController {
     }
 
     @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping("/users/delete/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         userService.delete(id);
     }
 
+    @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
+    @GetMapping("/update_user")
+    public ModelAndView getUserUpdatePage() {
+        LOGGER.info("Rendering user update page.");
+        return new ModelAndView("update_user", "updateForm", new UserUpdateForm());
+    }
 
+    @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
+    @PostMapping("/update")
+    public String updateUser(@Valid @ModelAttribute("updateForm") UserUpdateForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/update_user";
+        }
+        userService.update(form);
+        return "redirect:/";
+    }
 }

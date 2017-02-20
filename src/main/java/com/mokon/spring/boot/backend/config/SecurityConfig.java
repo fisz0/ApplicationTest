@@ -27,32 +27,32 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/public/**", "/register/**").permitAll()
-                .antMatchers("/users/**", "/delete/**").hasAuthority("ADMIN")
-                .anyRequest().fullyAuthenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error")
-                .usernameParameter("login")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logout").
-                logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
-                .deleteCookies("remember-me")
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .and()
-                .rememberMe();
+            .antMatchers("/", "/public/**", "/register/**").permitAll()
+            .antMatchers("/delete/**", "/users/**").hasAuthority("ADMIN")
+            .anyRequest().fullyAuthenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .failureUrl("/login?error")
+            .usernameParameter("login")
+            .permitAll()
+            .and()
+            .logout()
+            .logoutUrl("/logout")
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/login")
+            .deleteCookies("remember-me")
+            .logoutSuccessUrl("/")
+            .permitAll()
+            .and()
+            .rememberMe();
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(new BCryptPasswordEncoder());
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(new BCryptPasswordEncoder());
     }
 
 }

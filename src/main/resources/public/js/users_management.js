@@ -21,7 +21,7 @@ function deleteUser(event) {
                 action: function () {
                     console.info("Delete user action- confirmed.");
                     $.ajax({
-                        url: "/delete/" + $(buttonClicked).attr("id"),
+                        url: "/users/delete/" + $(buttonClicked).attr("id"),
                         type: 'DELETE',
                         contentType: 'application/json',
                         dataType: 'text',
