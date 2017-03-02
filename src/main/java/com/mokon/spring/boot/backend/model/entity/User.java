@@ -31,9 +31,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "notes", cascade = CascadeType.ALL)
-    private Set<Note> notes;
-
     public Long getId() {
         return id;
     }
@@ -90,11 +87,4 @@ public class User {
         this.login = login;
     }
 
-    public Set<Note> getNotes() {
-        return notes;
-    }
-
-    public void addNote(Note note) {
-        this.notes.add(note);
-    }
 }

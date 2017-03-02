@@ -1,5 +1,6 @@
 <#import "template.ftl" as template>
 <#import "lorem.ftl" as lorem>
+<#import "spring.ftl" as spring>
 
 <@template.htmlTemplate>
 <div id="userTableContainer" class="basicPanel basicLeftPanel">
